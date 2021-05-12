@@ -11,6 +11,7 @@ void armstrong(int a){
         power = (int)(pow(rem, size)+0.5);
         sum = power + sum;
         a = a/10;
+        //try this with cout
     }
     if(sum == d){
         cout<<"Armstrong";
