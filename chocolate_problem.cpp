@@ -6,28 +6,32 @@ and with three chocolate wrappers I can buy extra chocolate.
 So tell how many chocolate I can have with the money.
 */
 
-void chocolate(int N){
-    int wrappers_chocolate = 0, sum = 0, wrappers = 0;
-    sum = sum + N;
-    wrappers_chocolate = N/3;
-    wrappers = N%3;
-    int temp = 0;
-    while(wrappers_chocolate > 0){
-        sum = sum + wrappers_chocolate; //20
-        if(wrappers_chocolate >= 3){
-        wrappers = wrappers_chocolate%3; //2
-        }else{
-            wrappers = 0;
-        }
-        wrappers_chocolate = (temp + wrappers_chocolate)/3; //1
-        temp = wrappers_chocolate+wrappers; //3
-        
+/* naive method
+int rem_wrapchoc(int choc, int wrap_price){
+    if(choc < wrap_price){
+        return 0;
     }
-    cout << sum;
+
+    int wrap = choc/wrap_price;
+
+    return wrap + rem_wrapchoc((wrap + choc%wrap_price), wrap_price);
+}
+
+*/
+
+int chocolate(int N, int price, int wrap_price){
+    int choc = N/price;
+    
+
+    // return choc + rem_wrapchoc(choc, wrap_price);
+
+    return choc + ((choc - 1)/(wrap_price - 1));
 }
 
 int main(){
     int N;
-    cin>>N;
-    chocolate(N);
+    int price;
+    int wrap_price;
+    cin>>N>>price>>wrap_price;
+    cout << chocolate(N, price, wrap_price);
 }
